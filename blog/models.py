@@ -4,6 +4,13 @@ from django.db.models.functions import Now
 
 
 class PublishedManager(models.Manager):
+    """
+    Le PublishedManager est un gestionnaire personnalisé pour le modèle Post.
+    Il est utilisé pour récupérer uniquement les articles qui ont le statut "PUBLISHED".
+    
+    La méthode get_queryset() surcharge la méthode par défaut pour filtrer les articles
+    et ne retourner que ceux dont le statut est égal à Post.Status.PUBLISHED.
+    """
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
 
