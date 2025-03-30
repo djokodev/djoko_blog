@@ -1,5 +1,5 @@
 from django.urls import path
-from blog.views import post_list, post_detail, PostListView, post_share
+from blog.views import post_list, post_detail, PostListView, post_share, post_comment
 
 
 # La ligne suivante définit le nom de l'application pour l'espace de noms des URL.
@@ -19,4 +19,5 @@ urlpatterns = [
         name="post_detail"
     ),
     path('<int:post_id>/share/', post_share, name='post_share'),
+    path('<int:post_id>/comment/', post_comment, name='post_comment'),
 ]
