@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models.functions import Now
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class PublishedManager(models.Manager):
@@ -21,6 +22,9 @@ class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = "DF", "Draft"
         PUBLISHED = "PB", "Published"
+
+    # Le gestionnaire de tags vous permettra d'ajouter, de récupérer et de supprimer des tags des objets Post.
+    tags = TaggableManager()
 
     title = models.CharField(max_length=250)
     # Ce champ est utilisé pour stocker la représentation URL-friendly du titre.
